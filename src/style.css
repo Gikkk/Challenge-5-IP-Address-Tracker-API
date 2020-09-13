@@ -5,4 +5,9 @@
 body{
   font-family: 'Rubik', sans-serif;
   width: 100%;
+  margin: 0;
+}
+
+#mapid{
+   height: 650px; 
 }
