@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
+  <script src="./app.js" defer></script>
+  <title> Gikkk| IP Address Tracker </title>
+</head>
+<body>
+  <div class="main">
+    <h1>IP Address Tracker</h1>
+    <form class="search">
+      <input type="text" placeholder="Search for any IP address or domain" id="ip">
+      <button type="submit" class="button" ><svg xmlns="http://www.w3.org/2000/svg" width="11" height="14"><path fill="none" stroke="#FFF" stroke-width="3" d="M2 1l6 6-6 6"/></svg>
+      </button>
+    </form>
+    <div class="info">
+      <div>
+        <p class="info-head">IP Address</p>
+        <p class="info-text ip-content"></p>
+      </div>
+      <div>
+        <p class="info-head">Location</p>
+        <p class="info-text location"></p>
+      </div>
+      <div>
+        <p class="info-head">Timezone</p>
+        <p class="info-text timezone"></p>
+      </div>
+      <div class="exception">
+        <p class="info-head">ISP</p>
+        <p class="info-text isp"></p>
+      </div>  
+    </div>
+  </div>
+  <div id="mapid"></div>
+</body>
+</html>
