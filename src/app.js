@@ -12,7 +12,7 @@ let lng = 0;
 
 const map = L.map('mapid', { zoomControl: false }).setView([lat, lng], 18);
 const myIcon = L.icon({
-    iconUrl: '../images/icon-location.svg',
+    iconUrl: './images/icon-location.svg',
     iconSize: [25, 40],
     iconAnchor: [12.5, 38],
 });
@@ -29,12 +29,12 @@ const checkRequest = () => {
     if (searchInput.value && ipRegex.test(searchInput.value)) {
       return {
         type: 'ip',
-        value: searchInput.value,
+        value: "&ipAddress=" + searchInput.value
       };
     } else if (searchInput.value && domainRegex.test(searchInput.value)) {
       return {
         type: 'domain',
-        value: searchInput.value,
+        value: "&domain=" + searchInput.value
       };
     }
     // return user's ip by default
@@ -44,32 +44,37 @@ const checkRequest = () => {
     };
   };
 
-
 // request
-async function getData(){
-    const response= await fetch(api)
-    const data = await response.json();
-    searchInput.value = '';
-    console.log(data);
-    userIp.textContent = data.ip;
-    userIsp.textContent = data.isp;
-    userLocation.textContent = data.location.city + ", " + data.location.country;
-    userTimezone.textContent = "UTC " + data.location.timezone;
-    lat = data.location.lat;
-    lng = data.location.lng;
+async function getUserIp(){
+    const options = checkRequest();
+    const url = `${api}&${options.type}=${options.value}`
     
-
-    L.marker([lat, lng], {icon: myIcon}).addTo(map);
-    map.setView([lat, lng]);
+    const response = await fetch(url);
+    if (response.status >= 200 && response.status <= 299) {
+      const data = await response.json();
+      searchInput.value = '';
+      console.log(data);
+      userIp.textContent = data.ip;
+      userIsp.textContent = data.isp;
+      userLocation.textContent = data.location.city + ", " + data.location.region + ", " + data.location.country;
+      userTimezone.textContent = "UTC " + data.location.timezone;
+      lat = data.location.lat;
+      lng = data.location.lng;
+      
+      L.marker([lat, lng], {icon: myIcon}).addTo(map);
+      map.setView([lat, lng]);
+    } else {
+      console.log(response.status, response.statusText);
+    }
 }
 
 button.addEventListener('click', event =>{
     event.preventDefault();
-
-    getData();
+    getUserIp();
 });
 
-getData();
+getUserIp();
+
     
 
 
