@@ -17,25 +17,31 @@
   <title> Gikkk| IP Address Tracker </title>
 </head>
 <body>
-  <h1>IP Address Tracker</h1>
-  <input type="text" placeholder="Search for any IP address or domain">
-  <div>
-    <div>
-      <p>IP Address</p>
-      <div>8.8.8.8</div>
+  <div class="main">
+    <h1>IP Address Tracker</h1>
+    <form class="search">
+      <input type="text" placeholder="Search for any IP address or domain" id="ip">
+      <button type="submit" class="button" ><svg xmlns="http://www.w3.org/2000/svg" width="11" height="14"><path fill="none" stroke="#FFF" stroke-width="3" d="M2 1l6 6-6 6"/></svg>
+      </button>
+    </form>
+    <div class="info">
+      <div>
+        <p class="info-head">IP Address</p>
+        <p class="info-text ip-content"></p>
+      </div>
+      <div>
+        <p class="info-head">Location</p>
+        <p class="info-text location"></p>
+      </div>
+      <div>
+        <p class="info-head">Timezone</p>
+        <p class="info-text timezone"></p>
+      </div>
+      <div class="exception">
+        <p class="info-head">ISP</p>
+        <p class="info-text isp"></p>
+      </div>  
     </div>
-    <div>
-      <p>Location</p>
-      <div>GEO</div>
-    </div>
-    <div>
-      <p>Timezone</p>
-      <div>UTC -4:00</div>
-    </div>
-    <div>
-      <p>ISP</p>
-      <div>Silknet</div>
-    </div>  
   </div>
   <div id="mapid"></div>
 </body>
